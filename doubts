@@ -1,0 +1,23 @@
+24th jan 2024
+
+1. https://leetcode.com/problems/single-number-ii/
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        long ans = 0;
+        int p=0;
+        int setBitsTotal = 0;
+        for(int i=0;i<32;i++){
+            setBitsTotal = 0;
+            for(int j=0;j<nums.length;j++){
+                setBitsTotal = setBitsTotal+ (nums[j]&1);
+                nums[j] = nums[j]>>1;
+            }
+            setBitsTotal = setBitsTotal%3;
+            ans = ans + (setBitsTotal)*(long)Math.pow(2,p);
+            p++;
+        }
+      return (int)ans;
+    
+    }
+}
