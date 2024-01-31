@@ -21,3 +21,26 @@ class Solution {
     
     }
 }
+
+https://www.geeksforgeeks.org/problems/find-sum-of-different-corresponding-bits-for-all-pairs4652/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+
+class Solution{
+    static int countBits(int N, long A[])
+    {
+        long ans = 0;
+        int mod = 1000000007;
+        for(int i=0;i<32;i++){
+            long setBits = 0;
+            long unsetBits = 0;
+            for(int j=0;j<A.length;j++){
+                if((A[j]&(1<<i))!=0){
+                    setBits++;
+                }
+            }
+            unsetBits = A.length-setBits;
+            long diff = (setBits*unsetBits)*2;
+            ans = ans+diff;
+        }
+        return (int)ans%mod;
+    }
+}
